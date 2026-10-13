@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Studio.ge — ქართული გახმოვანება</title>
+<meta name="description" content="Cloud Studio.ge — professional Georgian dubbing for movies and series.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans+Georgian:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#141625;
+    --deep:#1d1f33;
+    --violet:#3a3352;
+    --mauve:#6b5a7a;
+    --dusk:#b07a78;
+    --amber:#e8a35f;
+    --gold:#f3c98b;
+    --cream:#f4ece4;
+    --text:#e9e3ea;
+    --muted:#a9a2b6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Montserrat","Noto Sans Georgian",sans-serif;
+    background:var(--night);
+    color:var(--text);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  .ka{font-family:"Noto Sans Georgian","Montserrat",sans-serif}
+  a{color:inherit;text-decoration:none}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 5vw;
+    background:linear-gradient(to bottom,rgba(20,22,37,.85),rgba(20,22,37,0));
+    backdrop-filter:blur(4px);
+  }
+  .logo{font-weight:800;letter-spacing:.08em;font-size:1.1rem}
+  .logo span{color:var(--gold)}
+  .nav-links{display:flex;gap:28px;font-size:.85rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+  .nav-links a{opacity:.8;transition:.2s}
+  .nav-links a:hover{opacity:1;color:var(--gold)}
+  .burger{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:120px 16px 160px;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 60% 40% at 8% 55%, rgba(232,163,95,.75), transparent 70%),
+      radial-gradient(ellipse 50% 35% at 95% 50%, rgba(232,163,95,.45), transparent 70%),
+      linear-gradient(to bottom,#4a4466 0%,#6d5f7d 25%,#a77f80 45%,#d79a6c 58%,#3a3352 72%,#1d1f33 100%);
+  }
+  /* soft clouds */
+  .cloud{
+    position:absolute;border-radius:50%;
+    filter:blur(28px);opacity:.85;
+    animation:drift 40s ease-in-out infinite alternate;
+  }
+  .c1{width:520px;height:300px;left:8%;top:6%;background:radial-gradient(circle at 40% 40%,#8a7590,#4b405e 60%,transparent 75%)}
+  .c2{width:700px;height:380px;left:32%;top:-4%;background:radial-gradient(circle at 50% 45%,#9a8296,#4a3f5c 60%,transparent 75%);animation-duration:55s}
+  .c3{width:560px;height:320px;right:-4%;top:10%;background:radial-gradient(circle at 55% 40%,#7c6a86,#3f3653 60%,transparent 75%);animation-duration:48s}
+  .c4{width:420px;height:180px;left:-6%;top:40%;background:radial-gradient(circle,#c98a72,transparent 70%);opacity:.6}
+  .c5{width:380px;height:160px;right:2%;top:44%;background:radial-gradient(circle,#5a4d6c,transparent 70%);opacity:.7}
+  @keyframes drift{from{transform:translateX(-30px)}to{transform:translateX(40px)}}
+
+  .mountains{position:absolute;left:0;right:0;bottom:60px;width:100%;height:42vh;min-height:260px}
+  .hero-content{position:relative;z-index:5}
+
+  .title{
+    font-weight:800;line-height:.9;letter-spacing:.02em;
+    font-size:clamp(4rem,15vw,11rem);
+    background:linear-gradient(170deg,#ffffff 10%,#e9dbe6 35%,#c9b3c9 55%,#f6d9b8 80%,#ffffff 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 6px 24px rgba(20,22,37,.55));
+  }
+  .subtitle{
+    font-weight:500;letter-spacing:.06em;
+    font-size:clamp(2.2rem,7vw,5rem);line-height:1.1;
+    color:var(--cream);
+    display:inline-flex;align-items:center;gap:.15em;
+    text-shadow:0 4px 18px rgba(20,22,37,.6);
+  }
+  .globe{width:.85em;height:.85em}
+  .services-line{
+    margin-top:22px;
+    font-size:clamp(.75rem,1.6vw,1rem);font-weight:600;letter-spacing:.14em;
+    color:var(--gold);text-transform:uppercase;
+  }
+  .services-line i{font-style:normal;opacity:.6;margin:0 .6em}
+  .tagline{
+    margin-top:8px;font-weight:700;letter-spacing:.16em;
+    font-size:clamp(1rem,2.4vw,1.5rem);color:var(--amber);
+  }
+  .tagline-ka{margin-top:6px;color:var(--cream);opacity:.85;font-size:clamp(.9rem,1.8vw,1.1rem)}
+  .cta{
+    display:inline-block;margin-top:34px;
+    padding:14px 34px;border-radius:40px;
+    font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.85rem;
+    background:linear-gradient(90deg,var(--amber),var(--dusk));
+    color:var(--night);
+    box-shadow:0 8px 30px rgba(232,163,95,.35);
+    transition:transform .2s,box-shadow .2s;
+  }
+  .cta:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(232,163,95,.5)}
+
+  .hero-icon{position:absolute;z-index:4;bottom:120px;opacity:.75;width:clamp(70px,9vw,120px)}
+  .hero-icon.left{left:12%}
+  .hero-icon.right{right:12%}
+
+  /* ---------- FILM STRIP ---------- */
+  .filmstrip{
+    position:relative;height:60px;background:#0e0f1a;
+    display:flex;align-items:center;
+  }
+  .filmstrip::before,.filmstrip::after{
+    content:"";position:absolute;left:0;right:0;height:12px;
+    background:repeating-linear-gradient(90deg,transparent 0 14px,#3a3550 14px 34px,transparent 34px 48px);
+    border-radius:3px;
+  }
+  .filmstrip::before{top:8px}
+  .filmstrip::after{bottom:8px}
+  .hero .filmstrip{position:absolute;bottom:0;left:0;right:0;z-index:6}
+  .peak{position:absolute;left:50%;transform:translateX(-50%);bottom:24px;width:150px;z-index:7;opacity:.9}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:110px 6vw;position:relative}
+  .eyebrow{
+    color:var(--amber);font-weight:700;letter-spacing:.22em;text-transform:uppercase;font-size:.8rem;
+  }
+  h2{
+    font-size:clamp(2rem,5vw,3.2rem);font-weight:800;line-height:1.1;margin:10px 0 18px;
+    color:var(--cream);
+  }
+  .lead{max-width:680px;color:var(--muted);font-size:1.05rem}
+  .center{text-align:center}
+  .center .lead{margin:0 auto}
+
+  #about{
+    background:linear-gradient(to bottom,var(--night),var(--deep));
+  }
+  .about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .stat{
+    padding:28px;border-radius:18px;
+    background:linear-gradient(145deg,rgba(107,90,122,.25),rgba(29,31,51,.6));
+    border:1px solid rgba(243,201,139,.15);
+  }
+  .stat b{display:block;font-size:2.4rem;font-weight:800;color:var(--gold);line-height:1}
+  .stat span{font-size:.85rem;color:var(--muted);letter-spacing:.05em}
+
+  #services{background:var(--deep)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:50px}
+  .card{
+    padding:34px 28px;border-radius:20px;
+    background:linear-gradient(160deg,rgba(58,51,82,.7),rgba(20,22,37,.9));
+    border:1px solid rgba(255,255,255,.06);
+    transition:transform .3s,border-color .3s;
+    text-align:left;
+  }
+  .card:hover{transform:translateY(-6px);border-color:rgba(243,201,139,.45)}
+  .card svg{width:42px;height:42px;margin-bottom:18px;stroke:var(--amber)}
+  .card h3{font-size:1.15rem;margin-bottom:4px;color:var(--cream)}
+  .card .ka{font-size:.85rem;color:var(--gold);display:block;margin-bottom:12px}
+  .card p{color:var(--muted);font-size:.95rem}
+
+  #process{
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 0%,rgba(176,122,120,.25),transparent 70%),
+      var(--night);
+  }
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:50px;counter-reset:s}
+  .step{position:relative;padding:28px 22px;border-top:2px solid rgba(232,163,95,.4)}
+  .step::before{
+    counter-increment:s;content:"0" counter(s);
+    font-weight:800;font-size:2.6rem;color:transparent;
+    -webkit-text-stroke:1px var(--amber);display:block;margin-bottom:8px;
+  }
+  .step h4{font-size:1.05rem;color:var(--cream);margin-bottom:6px}
+  .step p{font-size:.92rem;color:var(--muted)}
+
+  #works{background:var(--deep)}
+  .works{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px;margin-top:50px}
+  .poster{
+    aspect-ratio:2/3;border-radius:16px;overflow:hidden;position:relative;
+    display:flex;align-items:flex-end;padding:20px;
+    border:1px solid rgba(255,255,255,.06);
+    transition:transform .3s;
+  }
+  .poster:hover{transform:scale(1.03)}
+  .poster::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,15,26,.95),transparent 60%)}
+  .poster div{position:relative;z-index:2}
+  .poster h5{font-size:1.05rem;color:var(--cream)}
+  .poster small{color:var(--gold);letter-spacing:.1em;text-transform:uppercase;font-size:.7rem}
+  .p1{background:linear-gradient(160deg,#6d5f7d,#d79a6c)}
+  .p2{background:linear-gradient(160deg,#2c3a5a,#8a7590)}
+  .p3{background:linear-gradient(160deg,#b07a78,#3a3352)}
+  .p4{background:linear-gradient(160deg,#e8a35f,#4a4466)}
+
+  #contact{
+    text-align:center;overflow:hidden;
+    background:linear-gradient(to bottom,var(--deep) 0%,#3a3352 50%,#b07a78 85%,#e8a35f 100%);
+    padding-bottom:0;
+  }
+  .contact-box{
+    max-width:640px;margin:40px auto 0;padding:40px;border-radius:24px;
+    background:rgba(20,22,37,.55);backdrop-filter:blur(10px);
+    border:1px solid rgba(243,201,139,.2);
+    position:relative;z-index:3;
+  }
+  .contact-row{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:22px}
+  .pill{
+    padding:12px 24px;border-radius:40px;font-weight:600;font-size:.9rem;
+    border:1px solid rgba(243,201,139,.4);transition:.2s;
+  }
+  .pill:hover{background:var(--amber);color:var(--night)}
+  .contact-mountains{display:block;width:100%;height:180px;margin-top:-40px}
+
+  footer{
+    background:#0e0f1a;text-align:center;padding:26px 16px 30px;
+    color:var(--muted);font-size:.85rem;
+  }
+  footer .filmstrip{margin-bottom:20px}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+  .reveal.show{opacity:1;transform:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .about-grid{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .hero-icon{display:none}
+  }
+  @media (max-width:680px){
+    .nav-links{
+      position:fixed;top:64px;right:16px;flex-direction:column;gap:18px;
+      background:rgba(20,22,37,.95);padding:24px 30px;border-radius:16px;
+      display:none;
+    }
+    .nav-links.open{display:flex}
+    .burger{display:block}
+    .steps{grid-template-columns:1fr}
+    section{padding:80px 16px}
+    .contact-box{padding:28px 20px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">CLOUD <span>STUDIO.ge</span></a>
+  <button class="burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#works">Works</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
+  <div class="cloud c4"></div>
+  <div class="cloud c5"></div>
+
+  <svg class="mountains" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
+    <polygon fill="#5b5270" opacity=".55" points="0,260 90,190 170,230 260,140 340,200 420,170 520,240 1440,240 1440,400 0,400"/>
+    <polygon fill="#5b5270" opacity=".55" points="900,240 1000,150 1060,180 1140,110 1220,170 1300,140 1380,200 1440,180 1440,400 900,400"/>
+    <polygon fill="#3a3352" points="0,300 120,230 210,270 300,200 400,280 520,250 640,310 760,270 880,320 1000,250 1100,280 1200,220 1320,270 1440,240 1440,400 0,400"/>
+    <polygon fill="#24233a" points="0,340 160,290 300,330 460,300 600,350 760,320 920,360 1080,310 1240,345 1440,300 1440,400 0,400"/>
+  </svg>
+
+  <!-- camera icon -->
+  <svg class="hero-icon left" viewBox="0 0 120 150" fill="none" stroke="#c9b3c9" stroke-width="3" aria-hidden="true">
+    <circle cx="35" cy="22" r="16"/><circle cx="70" cy="22" r="16"/>
+    <circle cx="35" cy="22" r="5"/><circle cx="70" cy="22" r="5"/>
+    <rect x="18" y="40" width="64" height="38" rx="5"/>
+    <polygon points="82,50 108,40 108,78 82,68"/>
+    <line x1="50" y1="78" x2="50" y2="96"/>
+    <line x1="50" y1="96" x2="28" y2="145"/><line x1="50" y1="96" x2="72" y2="145"/><line x1="50" y1="96" x2="50" y2="145"/>
+  </svg>
+
+  <!-- microphone icon (dubbing) -->
+  <svg class="hero-icon right" viewBox="0 0 120 150" fill="none" stroke="#c9b3c9" stroke-width="3" aria-hidden="true">
+    <rect x="42" y="10" width="36" height="62" rx="18"/>
+    <line x1="48" y1="30" x2="72" y2="30"/><line x1="48" y1="42" x2="72" y2="42"/><line x1="48" y1="54" x2="72" y2="54"/>
+    <path d="M30 56 a30 30 0 0 0 60 0"/>
+    <line x1="60" y1="86" x2="60" y2="118"/>
+    <line x1="38" y1="118" x2="82" y2="118"/>
+    <path d="M18 30 q-8 20 0 40" /><path d="M102 30 q8 20 0 40"/>
+  </svg>
+
+  <div class="hero-content">
+    <h1 class="title">CLOUD</h1>
+    <div class="subtitle">
+      STUDIO.ge
+      <svg class="globe" viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="22" fill="#e9e3ea"/>
+        <path fill="#3a3352" d="M12 14c4-3 9-4 12-2 2 2-1 5 1 7s6 0 7 3-3 5-6 6-3 5-6 6c-3 0-4-4-6-6s-5-2-5-5 1-6 3-9zM32 30c2-1 6 0 6 2s-2 5-4 6-4 0-4-2 0-5 2-6zM30 8c3 0 7 2 9 5-2 1-5 0-7-1s-4-3-2-4z"/>
+      </svg>
+    </div>
+    <p class="services-line">Dubbing <i>|</i> Voice Acting <i>|</i> Post-Production</p>
+    <p class="tagline">LISTEN. FEEL. WATCH.</p>
+    <p class="tagline-ka ka">ფილმების პროფესიონალური ქართული გახმოვანება</p>
+    <a href="#contact" class="cta">Work with us</a>
+  </div>
+
+  <svg class="peak" viewBox="0 0 150 40" aria-hidden="true">
+    <polygon fill="#4a4466" points="0,40 40,12 55,22 75,2 95,20 110,10 150,40"/>
+    <polygon fill="#c9b3c9" opacity=".6" points="70,7 75,2 80,8 76,11"/>
+  </svg>
+  <div class="filmstrip"></div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <p class="eyebrow">About the studio</p>
+      <h2>Every film deserves to speak Georgian.</h2>
+      <p class="lead">Cloud Studio.ge is a Georgian dubbing studio. We bring movies, series and animation to Georgian audiences with natural translation, carefully cast voices and clean, cinema-quality sound so the story feels like it was made in our language from the start.</p>
+      <p class="lead ka" style="margin-top:14px">Cloud Studio.ge — ფილმებს, სერიალებსა და ანიმაციას ქართულ ენაზე ვახმოვანებთ: ზუსტი თარგმანით, შერჩეული ხმებით და მაღალი ხარისხის ხმით.</p>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><b>100+</b><span>Titles dubbed</span></div>
+      <div class="stat"><b>30+</b><span>Voice actors</span></div>
+      <div class="stat"><b>5.1</b><span>Surround mixing</span></div>
+      <div class="stat"><b>24/7</b><span>Passion for film</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services" class="center">
+  <p class="eyebrow">What we do</p>
+  <h2>Our services</h2>
+  <p class="lead">From script to final mix — the full dubbing pipeline under one roof.</p>
+
+  <div class="cards">
+    <div class="card reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4M8 22h8"/></svg>
+      <h3>Movie Dubbing</h3><span class="ka">ფილმების გახმოვანება</span>
+      <p>Full lip-synced Georgian dubbing for feature films, series and animation.</p>
+    </div>
+    <div class="card reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 9h8M8 12h5"/></svg>
+      <h3>Translation & Adaptation</h3><span class="ka">თარგმანი და ადაპტაცია</span>
+      <p>Scripts adapted to sound natural, keep the humour and match the lip movement.</p>
+    </div>
+    <div class="card reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><path d="M17 4a4 4 0 0 1 0 8M22 21c0-3-2-5-4-5.5"/></svg>
+      <h3>Voice Casting</h3><span class="ka">ხმების შერჩევა</span>
+      <p>The right voice for every character, from leading roles to the background crowd.</p>
+    </div>
+    <div class="card reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"><path d="M4 21V14M4 10V3M12 21V12M12 8V3M20 21V16M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>
+      <h3>Mixing & Post-Production</h3><span class="ka">მიქსი და პოსტ-პროდაქშენი</span>
+      <p>Stereo and 5.1 mixing, sound cleanup and delivery in any format you need.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section id="process" class="center">
+  <p class="eyebrow">How it works</p>
+  <h2>From script to screen</h2>
+  <div class="steps">
+    <div class="step reveal"><h4>Translate</h4><p>We translate and adapt the script for timing and lip-sync.</p></div>
+    <div class="step reveal"><h4>Cast</h4><p>We pick voices that fit each character's age, tone and energy.</p></div>
+    <div class="step reveal"><h4>Record</h4><p>Actors record in our studio with a dubbing director.</p></div>
+    <div class="step reveal"><h4>Mix & Deliver</h4><p>We mix, master and deliver the final Georgian track.</p></div>
+  </div>
+</section>
+
+<!-- ================= WORKS ================= -->
+<section id="works" class="center">
+  <p class="eyebrow">Portfolio</p>
+  <h2>Recent works</h2>
+  <p class="lead">Replace these cards with your own titles and posters.</p>
+  <div class="works">
+    <div class="poster p1 reveal"><div><small>Feature film</small><h5>Project Title One</h5></div></div>
+    <div class="poster p2 reveal"><div><small>Series</small><h5>Project Title Two</h5></div></div>
+    <div class="poster p3 reveal"><div><small>Animation</small><h5>Project Title Three</h5></div></div>
+    <div class="poster p4 reveal"><div><small>Documentary</small><h5>Project Title Four</h5></div></div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <p class="eyebrow">Contact</p>
+  <h2>Let's give your film a Georgian voice</h2>
+  <p class="lead" style="margin:0 auto">Tell us about your project and we'll get back to you.</p>
+  <div class="contact-box reveal">
+    <p class="ka" style="color:var(--gold);font-weight:600">დაგვიკავშირდით</p>
+    <div class="contact-row">
+      <a class="pill" href="mailto:admin@cloud.studio.ge">✉ admin@cloud.studio.ge</a>
+      <a class="pill" href="tel:+995595523750">☏ +995 595 523 750</a>
+    </div>
+    <div class="contact-row">
+      <a class="pill" href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a>
+      <a class="pill" href="https://instagram.com/cloud.studio.geo?srtk=MWM0d2ViMXB4aHZ3NA%3D%3D" target="_blank" rel="noopener">Instagram</a>
+      <a class="pill" href="https://youtube.com/" target="_blank" rel="noopener">YouTube</a>
+    </div>
+  </div>
+  <svg class="contact-mountains" viewBox="0 0 1440 180" preserveAspectRatio="none" aria-hidden="true">
+    <polygon fill="#3a3352" points="0,120 140,60 260,100 380,40 520,110 660,70 800,120 940,50 1080,100 1220,60 1340,90 1440,70 1440,180 0,180"/>
+    <polygon fill="#0e0f1a" points="0,160 200,110 380,150 560,120 760,165 960,125 1160,160 1440,120 1440,180 0,180"/>
+  </svg>
+</section>
+
+<footer>
+  <div class="filmstrip"></div>
+  <p>© <span id="year"></span> Cloud Studio.ge — <span class="ka">ქართული გახმოვანება</span></p>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.querySelectorAll('.nav-links a').forEach(a =>
+    a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open')));
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+  }, { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
